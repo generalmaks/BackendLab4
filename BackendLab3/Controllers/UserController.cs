@@ -23,6 +23,25 @@ public class UserController : ControllerBase
         var users = await _service.ListUsers();
         return Ok(users);
     }
+    
+    // GET: api/user/{id}
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<int>> Get(int id)
+    {
+        try
+        {
+            var user = await _service.Get(id);
+            return Ok(user);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
 
     // GET: api/users/{id}/default-currency
     [HttpGet("{id:int}/default-currency")]
@@ -45,8 +64,12 @@ public class UserController : ControllerBase
     {
         try
         {
-            var created = await _service.CreateAsync(dto);
-            return CreatedAtAction(nameof(List), null, dto); // 201 Created
+            var createdId = await _service.CreateAsync(dto);
+            return CreatedAtAction(
+                nameof(Get),
+                new { id = createdId },
+                new { id = createdId }
+            );
         }
         catch (Exception e)
         {
@@ -61,7 +84,7 @@ public class UserController : ControllerBase
         try
         {
             await _service.UpdateAsync(id, dto);
-            return NoContent(); // 204 No Content
+            return NoContent();
         }
         catch (KeyNotFoundException e)
         {

@@ -37,6 +37,10 @@ public class ExpenseController(IExpensesService service) : ControllerBase
             var expenseId = await service.CreateAsync(userId, dto);
             return CreatedAtAction(nameof(Get), new { id = expenseId, userId = userId }, dto);
         }
+        catch (KeyNotFoundException e)
+        {
+            return NotFound(e.Message);
+        }
         catch (Exception e)
         {
             return BadRequest(e.Message);
@@ -50,7 +54,7 @@ public class ExpenseController(IExpensesService service) : ControllerBase
         try
         {
             await service.UpdateAsync(id, dto);
-            return NoContent(); // 204, стандарт для успішного PUT
+            return NoContent();
         }
         catch (KeyNotFoundException e)
         {

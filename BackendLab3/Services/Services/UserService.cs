@@ -13,17 +13,22 @@ public class UserService(AppDbContext context) : IUserService
         return await context.Users.ToListAsync();
     }
 
+    public async Task<User> Get(int id)
+    {
+        var found = await context.Users.FindAsync(id);
+        return found ?? throw new KeyNotFoundException("User was not found");
+    }
+
     public async Task<int> CreateAsync(CreateUserDto dto)
     {
         var existingUser =
-            await context.Users.FirstOrDefaultAsync(
-                u => u.Username == dto.Username || u.Email == dto.Email);
+            await context.Users.FirstOrDefaultAsync(u => u.Username == dto.Username || u.Email == dto.Email);
         if (existingUser is not null)
             throw new Exception("User with respective username or email already exist.");
 
         if (await context.Currencies.FindAsync(dto.DefaultCurrencyId) is null)
             throw new KeyNotFoundException("Default currency not exist.");
-        
+
         var newUser = new User
         {
             Username = dto.Username,
@@ -40,18 +45,18 @@ public class UserService(AppDbContext context) : IUserService
         var existingUser = await context.Users.FindAsync(id);
         if (existingUser is null)
             throw new KeyNotFoundException($"User with id {id} not found.");
-        
+
         if (dto.Username is not null || dto.Email is not null)
         {
             var duplicateUser = await context.Users
-                .Where(u => u.Id != id && 
+                .Where(u => u.Id != id &&
                             (u.Username == dto.Username || u.Email == dto.Email))
                 .FirstOrDefaultAsync();
 
             if (duplicateUser is not null)
-                throw new Exception("Another user with the same username or email already exists.");
+                throw new ("Another user with the same username or email already exists.");
         }
-        
+
         if (dto.Username is not null)
             existingUser.Username = dto.Username;
 

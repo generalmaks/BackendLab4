@@ -20,6 +20,11 @@ public class ExpensesService(AppDbContext context) : IExpensesService
 
     public async Task<int> CreateAsync(int userId, CreateExpenseDto dto)
     {
+        if (await context.Users.FindAsync(userId) is null)
+            throw new KeyNotFoundException("User was not found.");
+        if (await context.Currencies.FindAsync(dto.CurrencyId) is null)
+            throw new KeyNotFoundException("Currency was not found.");
+        
         var expense = new Expense()
         {
             Description = dto.Description,

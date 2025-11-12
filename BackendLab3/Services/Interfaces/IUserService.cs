@@ -6,6 +6,7 @@ namespace BackendLab3.Services.Interfaces;
 public interface IUserService
 {
     Task<IEnumerable<User>> ListUsers();
+    Task<User> Get(int id);
     Task<int> CreateAsync(CreateUserDto dto);
     Task UpdateAsync(int id, UpdateUserDto dto);
     Task<Currency> GetDefaultCurrencyAsync(int userId);

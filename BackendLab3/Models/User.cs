@@ -22,5 +22,5 @@ public class User
     [ForeignKey(nameof(DefaultCurrencyId))]
     public Currency DefaultCurrency { get; set; } = null!;
 
-    public IEnumerable<Expense>? Expenses { get; } = [];
+    public ICollection<Expense>? Expenses { get; } = [];
 }
