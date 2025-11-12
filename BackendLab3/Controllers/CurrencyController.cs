@@ -1,8 +1,8 @@
-﻿using BackendLab3.Interfaces.Services;
+﻿using BackendLab3.Interfaces.Dto;
 using BackendLab3.Models;
 using BackendLab3.Services.Interfaces;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using UpdateCurrencyDto = BackendLab3.Services.Dto.Currency.UpdateCurrencyDto;
 
 namespace BackendLab3.Controllers;
 
@@ -31,6 +31,49 @@ public class CurrencyController(ICurrencyService service) : ControllerBase
         {
             var currency = await service.GetByIdAsync(id);
             return Ok(currency);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Post([FromBody] CreateCurrencyDto dto)
+    {
+        try
+        {
+            await service.CreateAsync(dto);
+            return Created();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> Put(int id, [FromBody] UpdateCurrencyDto dto)
+    {
+        try
+        {
+            await service.UpdateAsync(id, dto);
+            return NoContent();
+
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> Delete(int id)
+    {
+        try
+        {
+            await service.DeleteAsync(id);
+            return NoContent();
         }
         catch (Exception e)
         {
