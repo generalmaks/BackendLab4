@@ -1,5 +1,6 @@
 ﻿using BackendLab3.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace BackendLab3.Context;
 

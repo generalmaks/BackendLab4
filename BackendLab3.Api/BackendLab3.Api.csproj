@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>BackendLab3</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -31,7 +32,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Migrations\" />
+      <ProjectReference Include="..\BackendLab3.DataAccess\BackendLab3.DataAccess.csproj" />
+      <ProjectReference Include="..\BackendLab3.Services\BackendLab3.Services.csproj" />
     </ItemGroup>
 
 </Project>
