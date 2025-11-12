@@ -26,14 +26,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
+      <ProjectReference Include="..\BackendLab3.DataAccess\BackendLab3.DataAccess.csproj" />
+      <ProjectReference Include="..\BackendLab3.Services\BackendLab3.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BackendLab3.DataAccess\BackendLab3.DataAccess.csproj" />
-      <ProjectReference Include="..\BackendLab3.Services\BackendLab3.Services.csproj" />
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>
