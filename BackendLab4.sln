@@ -1,10 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendLab3.Api", "BackendLab3.Api\BackendLab3.Api.csproj", "{CAF6707F-EABA-447A-A13E-78CAB7A9AEAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendLab4.Api", "BackendLab4.Api\BackendLab4.Api.csproj", "{CAF6707F-EABA-447A-A13E-78CAB7A9AEAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendLab3.Services", "BackendLab3.Services\BackendLab3.Services.csproj", "{0B8F9F09-C40E-4D8C-BA79-D38F6D179B23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendLab4.Services", "BackendLab4.Services\BackendLab4.Services.csproj", "{0B8F9F09-C40E-4D8C-BA79-D38F6D179B23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendLab3.DataAccess", "BackendLab3.DataAccess\BackendLab3.DataAccess.csproj", "{5219D93C-CAAB-4CC4-8BF1-E4C05B17F405}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendLab4.DataAccess", "BackendLab4.DataAccess\BackendLab4.DataAccess.csproj", "{5219D93C-CAAB-4CC4-8BF1-E4C05B17F405}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

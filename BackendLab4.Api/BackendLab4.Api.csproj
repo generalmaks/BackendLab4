@@ -26,8 +26,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BackendLab3.DataAccess\BackendLab3.DataAccess.csproj" />
-      <ProjectReference Include="..\BackendLab3.Services\BackendLab3.Services.csproj" />
+      <ProjectReference Include="..\BackendLab4.DataAccess\BackendLab4.DataAccess.csproj" />
+      <ProjectReference Include="..\BackendLab4.Services\BackendLab4.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>
