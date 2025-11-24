@@ -1,4 +1,4 @@
-﻿using BackendLab3.Models;
+﻿using BackendLab3.DataAccess.Models;
 using BackendLab3.Services.Dto.User;
 using BackendLab3.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;

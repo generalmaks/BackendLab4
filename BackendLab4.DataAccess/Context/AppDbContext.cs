@@ -1,10 +1,10 @@
-﻿using BackendLab3.Models;
+﻿using BackendLab3.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace BackendLab3.Context;
+namespace BackendLab3.DataAccess.Context;
 
-public partial class AppDbContext(
+public class AppDbContext(
     DbContextOptions<AppDbContext> options, 
     IConfiguration config
     )

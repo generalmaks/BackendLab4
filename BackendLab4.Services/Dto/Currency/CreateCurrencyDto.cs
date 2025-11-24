@@ -1,4 +1,4 @@
-﻿namespace BackendLab3.Interfaces.Dto;
+﻿namespace BackendLab3.Services.Dto.Currency;
 
 public record CreateCurrencyDto
 {

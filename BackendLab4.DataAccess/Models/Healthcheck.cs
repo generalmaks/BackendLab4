@@ -1,4 +1,4 @@
-﻿namespace BackendLab3.Models;
+﻿namespace BackendLab3.DataAccess.Models;
 
 public class Healthcheck
 {

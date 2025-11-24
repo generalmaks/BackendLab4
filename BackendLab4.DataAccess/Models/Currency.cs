@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BackendLab3.Models;
+namespace BackendLab3.DataAccess.Models;
 
 public class Currency
 {

@@ -1,4 +1,4 @@
-﻿using BackendLab3.Models;
+﻿using BackendLab3.DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendLab3.Controllers;

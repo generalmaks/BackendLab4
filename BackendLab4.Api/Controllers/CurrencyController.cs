@@ -1,5 +1,5 @@
-﻿using BackendLab3.Interfaces.Dto;
-using BackendLab3.Models;
+﻿using BackendLab3.DataAccess.Models;
+using BackendLab3.Services.Dto.Currency;
 using BackendLab3.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using UpdateCurrencyDto = BackendLab3.Services.Dto.Currency.UpdateCurrencyDto;

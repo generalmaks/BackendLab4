@@ -1,5 +1,5 @@
 using System.Text;
-using BackendLab3.Context;
+using BackendLab3.DataAccess.Context;
 using BackendLab3.Services.Interfaces;
 using BackendLab3.Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -26,6 +26,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<ICurrencyService, CurrencyService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IExpensesService, ExpensesService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();

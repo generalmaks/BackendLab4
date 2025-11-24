@@ -1,4 +1,4 @@
-﻿using BackendLab3.Models;
+﻿using BackendLab3.DataAccess.Models;
 using BackendLab3.Services.Dto.Expense;
 
 namespace BackendLab3.Services.Interfaces;

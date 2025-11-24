@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BackendLab3.Models;
+namespace BackendLab3.DataAccess.Models;
 
 public class User
 {
@@ -15,6 +15,10 @@ public class User
     [Required]
     [EmailAddress, MaxLength(50)]
     public string Email { get; set; } = null!;
+
+    [Required] 
+    [MaxLength(200)] 
+    public string HashedPassword { get; set; } = null!;
 
     [Required]
     public int DefaultCurrencyId { get; set; }
