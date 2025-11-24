@@ -1,6 +1,7 @@
 ﻿using BackendLab3.DataAccess.Models;
 using BackendLab3.Services.Dto.Currency;
 using BackendLab3.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UpdateCurrencyDto = BackendLab3.Services.Dto.Currency.UpdateCurrencyDto;
 
@@ -10,6 +11,7 @@ namespace BackendLab3.Controllers;
 [Route("api/currency")]
 public class CurrencyController(ICurrencyService service) : ControllerBase
 {
+    [Authorize]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Currency>>> List()
     {
@@ -24,6 +26,7 @@ public class CurrencyController(ICurrencyService service) : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpGet("{id:int}")]
     public async Task<ActionResult<Currency>> Get(int id)
     {
@@ -38,6 +41,7 @@ public class CurrencyController(ICurrencyService service) : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult> Post([FromBody] CreateCurrencyDto dto)
     {
@@ -52,6 +56,7 @@ public class CurrencyController(ICurrencyService service) : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Put(int id, [FromBody] UpdateCurrencyDto dto)
     {
@@ -67,6 +72,7 @@ public class CurrencyController(ICurrencyService service) : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> Delete(int id)
     {

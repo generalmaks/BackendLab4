@@ -1,6 +1,7 @@
 ﻿using BackendLab3.DataAccess.Models;
 using BackendLab3.Services.Dto.User;
 using BackendLab3.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendLab3.Controllers;
@@ -17,6 +18,7 @@ public class UserController : ControllerBase
     }
 
     // GET: api/users
+    [Authorize]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<User>>> List()
     {
@@ -25,6 +27,7 @@ public class UserController : ControllerBase
     }
     
     // GET: api/user/{id}
+    [Authorize]
     [HttpGet("{id:int}")]
     public async Task<ActionResult<int>> Get(int id)
     {
@@ -44,6 +47,7 @@ public class UserController : ControllerBase
     }
 
     // GET: api/users/{id}/default-currency
+    [Authorize]
     [HttpGet("{id:int}/default-currency")]
     public async Task<ActionResult<Currency>> GetDefaultCurrency(int id)
     {
@@ -78,6 +82,7 @@ public class UserController : ControllerBase
     }
 
     // PUT: api/users/{id}
+    [Authorize]
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Update(int id, [FromBody] UpdateUserDto dto)
     {
@@ -97,6 +102,7 @@ public class UserController : ControllerBase
     }
 
     // PUT: api/users/{id}/default-currency
+    [Authorize]
     [HttpPut("{id:int}/default-currency")]
     public async Task<ActionResult> SetDefaultCurrency(int id, [FromQuery] int currencyId)
     {
@@ -112,6 +118,7 @@ public class UserController : ControllerBase
     }
 
     // DELETE: api/users/{id}
+    [Authorize]
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> Delete(int id)
     {

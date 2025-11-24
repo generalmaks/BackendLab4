@@ -1,4 +1,5 @@
 ﻿using BackendLab3.DataAccess.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendLab3.Controllers;
@@ -7,6 +8,7 @@ namespace BackendLab3.Controllers;
 [Route("/healthcheck")]
 public class HealthcheckController : ControllerBase
 {
+    [Authorize]
     [HttpGet]
     public ActionResult<Healthcheck> HealthCheck()
     {

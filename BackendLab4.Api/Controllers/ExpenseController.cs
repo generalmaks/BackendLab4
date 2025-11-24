@@ -1,6 +1,7 @@
 ﻿using BackendLab3.DataAccess.Models;
 using BackendLab3.Services.Dto.Expense;
 using BackendLab3.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendLab3.Controllers;
@@ -10,6 +11,7 @@ namespace BackendLab3.Controllers;
 public class ExpenseController(IExpensesService service) : ControllerBase
 {
     // GET: api/expenses
+    [Authorize]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Expense>>> List()
     {
@@ -18,6 +20,7 @@ public class ExpenseController(IExpensesService service) : ControllerBase
     }
 
     // GET: api/expenses/{id}?userId=1
+    [Authorize]
     [HttpGet("{id:int}")]
     public async Task<ActionResult<Expense>> Get(int id, [FromQuery] int userId)
     {
@@ -29,6 +32,7 @@ public class ExpenseController(IExpensesService service) : ControllerBase
     }
 
     // POST: api/expenses?userId=1
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult> Create([FromQuery] int userId, [FromBody] CreateExpenseDto dto)
     {
@@ -48,6 +52,7 @@ public class ExpenseController(IExpensesService service) : ControllerBase
     }
 
     // PUT: api/expenses/{id}
+    [Authorize]
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Update(int id, [FromBody] UpdateExpenseDto dto)
     {
@@ -67,6 +72,7 @@ public class ExpenseController(IExpensesService service) : ControllerBase
     }
 
     // DELETE: api/expenses/{id}
+    [Authorize]
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> Delete(int id)
     {
