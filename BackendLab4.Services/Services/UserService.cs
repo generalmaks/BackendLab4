@@ -26,7 +26,7 @@ public class UserService(AppDbContext context) : IUserService
         var existingUser =
             await context.Users.FirstOrDefaultAsync(u => u.Username == dto.Username || u.Email == dto.Email);
         if (existingUser is not null)
-            throw new Exception("User with respective username or email already exist.");
+            throw new KeyNotFoundException("User with respective username or email already exist.");
 
         if (await context.Currencies.FindAsync(dto.DefaultCurrencyId) is null)
             throw new KeyNotFoundException("Default currency not exist.");
