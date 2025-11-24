@@ -1,4 +1,6 @@
-﻿using BackendLab3.DataAccess.Context;
+﻿using System.Security.Cryptography;
+using System.Text;
+using BackendLab3.DataAccess.Context;
 using BackendLab3.DataAccess.Models;
 using BackendLab3.Services.Dto.User;
 using BackendLab3.Services.Interfaces;
@@ -29,11 +31,16 @@ public class UserService(AppDbContext context) : IUserService
         if (await context.Currencies.FindAsync(dto.DefaultCurrencyId) is null)
             throw new KeyNotFoundException("Default currency not exist.");
 
+        var hashedPassword = Convert.ToHexString(
+            SHA256.HashData(Encoding.UTF8.GetBytes(dto.UnhashedPassword))
+        );
+        
         var newUser = new User
         {
             Username = dto.Username,
             Email = dto.Email,
             DefaultCurrencyId = dto.DefaultCurrencyId,
+            HashedPassword = hashedPassword
         };
 
         await context.Users.AddAsync(newUser);
@@ -54,7 +61,7 @@ public class UserService(AppDbContext context) : IUserService
                 .FirstOrDefaultAsync();
 
             if (duplicateUser is not null)
-                throw new ("Another user with the same username or email already exists.");
+                throw new("Another user with the same username or email already exists.");
         }
 
         if (dto.Username is not null)
