@@ -42,7 +42,6 @@ public class AuthService(AppDbContext context, IConfiguration config) : IAuthSer
     private string GenerateToken(User user)
     {
         var secret = config["Jwt:Key"]!;
-        var issuer = config["Jwt:Issuer"]!;
         
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -53,8 +52,8 @@ public class AuthService(AppDbContext context, IConfiguration config) : IAuthSer
         };
 
         var token = new JwtSecurityToken(
-            issuer,
-            issuer,
+            null,
+            null,
             claims,
             expires: DateTime.UtcNow.AddDays(7),
             signingCredentials: creds
